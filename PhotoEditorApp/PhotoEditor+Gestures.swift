@@ -162,8 +162,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
     func moveView(view: UIView, recognizer: UIPanGestureRecognizer)  {
         
 //        mainBnts(isHidden: true)
-//        deleteView.isHidden = false
-        
+        deleteView(isHidden: false)
         view.superview?.bringSubview(toFront: view)
         let pointToSuperView = recognizer.location(in: self.view)
         
@@ -172,44 +171,43 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
         
         recognizer.setTranslation(CGPoint.zero, in: canvasImageView)
         
-//        if let previousPoint = lastPanPoint {
-//            //View is going into deleteView
-//            if deleteView.frame.contains(pointToSuperView) && !deleteView.frame.contains(previousPoint) {
-//                if #available(iOS 10.0, *) {
-//                    let generator = UIImpactFeedbackGenerator(style: .heavy)
-//                    generator.impactOccurred()
-//                }
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    view.transform = view.transform.scaledBy(x: 0.25, y: 0.25)
-//                    view.center = recognizer.location(in: self.canvasImageView)
-//                })
-//            }
-//                //View is going out of deleteView
-//            else if deleteView.frame.contains(previousPoint) && !deleteView.frame.contains(pointToSuperView) {
-//                //Scale to original Size
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    view.transform = view.transform.scaledBy(x: 4, y: 4)
-//                    view.center = recognizer.location(in: self.canvasImageView)
-//                })
-//            }
-//        }
+        if let previousPoint = lastPanPoint {
+            //View is going into deleteView
+            if deleteView.frame.contains(pointToSuperView) && !deleteView.frame.contains(previousPoint) {
+                if #available(iOS 10.0, *) {
+                    let generator = UIImpactFeedbackGenerator(style: .heavy)
+                    generator.impactOccurred()
+                }
+                UIView.animate(withDuration: 0.3, animations: {
+                    view.transform = view.transform.scaledBy(x: 0.25, y: 0.25)
+                    view.center = recognizer.location(in: self.canvasImageView)
+                })
+            }
+                //View is going out of deleteView
+            else if deleteView.frame.contains(previousPoint) && !deleteView.frame.contains(pointToSuperView) {
+                //Scale to original Size
+                UIView.animate(withDuration: 0.3, animations: {
+                    view.transform = view.transform.scaledBy(x: 4, y: 4)
+                    view.center = recognizer.location(in: self.canvasImageView)
+                })
+            }
+        }
         lastPanPoint = pointToSuperView
         
         if recognizer.state == .ended {
             imageViewToPan = nil
             lastPanPoint = nil
             mainBnts(isHidden: false)
-//            deleteView.isHidden = true
+            deleteView(isHidden: true)
             let point = recognizer.location(in: self.view)
             
-//            if deleteView.frame.contains(point) { // Delete the view
-//                view.removeFromSuperview()
-//                if #available(iOS 10.0, *) {
-//                    let generator = UINotificationFeedbackGenerator()
-//                    generator.notificationOccurred(.success)
-//                }
-//            } else
-                if !canvasImageView.bounds.contains(view.center) { //Snap the view back to canvasImageView
+            if deleteView.frame.contains(point) { // Delete the view
+                view.removeFromSuperview()
+                if #available(iOS 10.0, *) {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
+                }
+            } else if !canvasImageView.bounds.contains(view.center) { //Snap the view back to canvasImageView
                 UIView.animate(withDuration: 0.3, animations: {
                     view.center = self.canvasImageView.center
                 })

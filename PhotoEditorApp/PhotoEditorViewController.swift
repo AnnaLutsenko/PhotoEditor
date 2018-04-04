@@ -22,6 +22,7 @@ class PhotoEditorViewController: UIViewController {
     //To hold the drawings and shapes
     @IBOutlet weak var canvasImageView: UIImageView!
     
+    @IBOutlet weak var deleteView: UIView!
     @IBOutlet weak var colorsView: UIView!
     @IBOutlet weak var colorBtn: UIButton!
     @IBOutlet weak var colorViewBottomConstraint: NSLayoutConstraint!
@@ -115,6 +116,12 @@ class PhotoEditorViewController: UIViewController {
         sendBtn.isHidden = isHidden
         doneUndoBtnsView.isHidden = !isHidden
         colorsView.isHidden = !isHidden
+    }
+    
+    func deleteView(isHidden: Bool) {
+        deleteView.isHidden = isHidden
+        sendBtn.isHidden = !isHidden
+        shapesCollectionView.isHidden = true
     }
     
     @IBAction func addImageBtnTapped(_ sender: UIButton) {

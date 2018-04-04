@@ -22,7 +22,6 @@ class ShapeCollectionViewDelegate: NSObject, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         shapeDelegate.didSelectItem(indexPath.row)
-        collectionView.isHidden = true
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
