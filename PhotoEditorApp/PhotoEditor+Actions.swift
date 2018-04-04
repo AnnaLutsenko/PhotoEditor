@@ -13,12 +13,21 @@ extension PhotoEditorViewController {
     
     @IBAction func drawBtnTapped(_ sender: Any) {
         isDrawing = true
+        colorBtn.setImage(UIImage(named: "pencilIcon"), for: .normal)
         canvasImageView.isUserInteractionEnabled = false
+        mainBnts(isHidden: true)
+    }
+    
+    @IBAction func shapeBtnTapped(_ sender: Any) {
+        isShape = true
+        shapesCollectionView.isHidden = false
+        colorBtn.setImage(UIImage(named: "shapeIcon"), for: .normal)
         mainBnts(isHidden: true)
     }
     
     @IBAction func textButtonTapped(_ sender: Any) {
         isTyping = true
+        colorBtn.setImage(UIImage(named: "textIcon"), for: .normal)
         let textView = UITextView(frame: CGRect(x: 0, y: canvasImageView.center.y,
                                                 width: UIScreen.main.bounds.width, height: 30))
         
@@ -40,10 +49,11 @@ extension PhotoEditorViewController {
     
     @IBAction func doneBtnTapped(_ sender: UIButton) {
         view.endEditing(true)
-        
         canvasImageView.isUserInteractionEnabled = true
+        shapesCollectionView.isHidden = true
         mainBnts(isHidden: false)
         isDrawing = false
+        isShape = false
     }
     
     

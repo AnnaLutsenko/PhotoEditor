@@ -10,6 +10,10 @@ import UIKit
 
 class PhotoEditorViewController: UIViewController {
     
+    enum ShapeSelected: Int {
+        case triangle = 0, circle, square
+    }
+    
     /** holding the 2 imageViews original image and drawing & shapes */
     @IBOutlet weak var canvasView: UIView!
     //T@objc @objc o hold the image
@@ -19,9 +23,13 @@ class PhotoEditorViewController: UIViewController {
     @IBOutlet weak var canvasImageView: UIImageView!
     
     @IBOutlet weak var colorsView: UIView!
+    @IBOutlet weak var colorBtn: UIButton!
     @IBOutlet weak var colorViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var colorsCollectionView: UICollectionView!
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate!
+    
+    @IBOutlet weak var shapesCollectionView: UICollectionView!
+    var shapeCollectionViewDelegate: ShapeCollectionViewDelegate!
     
     @IBOutlet weak var doneUndoBtnsView: UIView!
     @IBOutlet weak var mainBtnsView: UIView!
@@ -31,6 +39,7 @@ class PhotoEditorViewController: UIViewController {
     
     var stickersVCIsVisible = false // for shape
     var swiped = false
+    var isShape = false
     var isDrawing = false
     var isTyping = false
     var drawColor = UIColor.black
@@ -49,7 +58,8 @@ class PhotoEditorViewController: UIViewController {
         super.viewDidLoad()
 
         followKeyboardNotifications()
-        configureCollectionView()
+        configureColorsCollectionView()
+        configureShapesCollectionView()
         initController()
     }
     
@@ -63,7 +73,7 @@ class PhotoEditorViewController: UIViewController {
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillChangeFrame(_:)), name: .UIKeyboardWillChangeFrame, object: nil)
     }
     
-    func configureCollectionView() {
+    func configureColorsCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 30, height: 70)
         layout.scrollDirection = .horizontal
@@ -77,6 +87,18 @@ class PhotoEditorViewController: UIViewController {
         }
         colorsCollectionView.delegate = colorsCollectionViewDelegate
         colorsCollectionView.dataSource = colorsCollectionViewDelegate
+    }
+    
+    func configureShapesCollectionView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        shapesCollectionView.collectionViewLayout = layout
+        shapeCollectionViewDelegate = ShapeCollectionViewDelegate()
+        shapeCollectionViewDelegate.shapeDelegate = self
+        shapesCollectionView.delegate = shapeCollectionViewDelegate
+        shapesCollectionView.dataSource = shapeCollectionViewDelegate
     }
     
     func setImageView(image: UIImage) {
@@ -126,11 +148,27 @@ extension PhotoEditorViewController: UIImagePickerControllerDelegate, UINavigati
 
 extension PhotoEditorViewController: ColorDelegate {
     func didSelectColor(color: UIColor) {
-        if isDrawing {
+        if isDrawing || isShape {
             self.drawColor = color
         } else if activeTextView != nil {
             activeTextView?.textColor = color
             textColor = color
+        }
+    }
+}
+
+extension PhotoEditorViewController: ShapeSelectedDelegate {
+    
+    func didSelectItem(_ item: Int) {
+        let shape: ShapeSelected = ShapeSelected(rawValue: item)!
+        
+        switch shape {
+        case .triangle:
+            createTriangle()
+        case .circle:
+            createSquare(radius: 50)
+        case .square:
+            createSquare(radius: 0)
         }
     }
 }

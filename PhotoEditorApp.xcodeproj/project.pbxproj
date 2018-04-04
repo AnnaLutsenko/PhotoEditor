@@ -27,6 +27,9 @@
 		95FFAF2A20739D5300C5DC23 /* CAGradientLayer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF2920739D5300C5DC23 /* CAGradientLayer+Ext.swift */; };
 		95FFAF2C2073B68900C5DC23 /* PhotoEditor+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF2B2073B68900C5DC23 /* PhotoEditor+Gestures.swift */; };
 		95FFAF2E2073B70500C5DC23 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF2D2073B70500C5DC23 /* UIImageView+Ext.swift */; };
+		95FFAF302074C34B00C5DC23 /* ShapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF2F2074C34B00C5DC23 /* ShapeCollectionViewCell.swift */; };
+		95FFAF332074C53600C5DC23 /* ShapeCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF322074C53600C5DC23 /* ShapeCollectionViewDelegate.swift */; };
+		95FFAF352074EAB700C5DC23 /* PhotoEditor+Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FFAF342074EAB700C5DC23 /* PhotoEditor+Shapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		95FFAF2920739D5300C5DC23 /* CAGradientLayer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Ext.swift"; sourceTree = "<group>"; };
 		95FFAF2B2073B68900C5DC23 /* PhotoEditor+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditor+Gestures.swift"; sourceTree = "<group>"; };
 		95FFAF2D2073B70500C5DC23 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		95FFAF2F2074C34B00C5DC23 /* ShapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewCell.swift; sourceTree = "<group>"; };
+		95FFAF322074C53600C5DC23 /* ShapeCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		95FFAF342074EAB700C5DC23 /* PhotoEditor+Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditor+Shapes.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,9 @@
 				95FFAF1B2072604100C5DC23 /* PhotoEditor+UITextView.swift */,
 				95FFAF1D2072625D00C5DC23 /* PhotoEditor+Keyboard.swift */,
 				95FFAF27207361D700C5DC23 /* PhotoEditor+Drawing.swift */,
+				95FFAF342074EAB700C5DC23 /* PhotoEditor+Shapes.swift */,
 				95FFAF252072764500C5DC23 /* Protocols.swift */,
+				95FFAF312074C3B400C5DC23 /* ShapesCollectionVC */,
 				95FFAF222072725500C5DC23 /* ColorsCollectionVC */,
 				95FFAEFE207222E500C5DC23 /* Main.storyboard */,
 				95FFAEFA207222E500C5DC23 /* AppDelegate.swift */,
@@ -127,10 +135,19 @@
 		95FFAF222072725500C5DC23 /* ColorsCollectionVC */ = {
 			isa = PBXGroup;
 			children = (
-				95FFAF1F207271D300C5DC23 /* ColorsCollectionViewDelegate.swift */,
 				95FFAF23207272AD00C5DC23 /* ColorCollectionViewCell.swift */,
+				95FFAF1F207271D300C5DC23 /* ColorsCollectionViewDelegate.swift */,
 			);
 			path = ColorsCollectionVC;
+			sourceTree = "<group>";
+		};
+		95FFAF312074C3B400C5DC23 /* ShapesCollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				95FFAF2F2074C34B00C5DC23 /* ShapeCollectionViewCell.swift */,
+				95FFAF322074C53600C5DC23 /* ShapeCollectionViewDelegate.swift */,
+			);
+			path = ShapesCollectionVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +236,10 @@
 				95FFAF1A20724E2F00C5DC23 /* PhotoEditor+Actions.swift in Sources */,
 				95FFAF1C2072604100C5DC23 /* PhotoEditor+UITextView.swift in Sources */,
 				95FFAF2C2073B68900C5DC23 /* PhotoEditor+Gestures.swift in Sources */,
+				95FFAF352074EAB700C5DC23 /* PhotoEditor+Shapes.swift in Sources */,
 				95FFAEFB207222E500C5DC23 /* AppDelegate.swift in Sources */,
+				95FFAF302074C34B00C5DC23 /* ShapeCollectionViewCell.swift in Sources */,
+				95FFAF332074C53600C5DC23 /* ShapeCollectionViewDelegate.swift in Sources */,
 				95FFAF2A20739D5300C5DC23 /* CAGradientLayer+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

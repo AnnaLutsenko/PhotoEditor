@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ShapeSelectedDelegate {
+    func didSelectItem(_ item: Int)
+}
+
 protocol ColorDelegate {
     func didSelectColor(color: UIColor)
 }

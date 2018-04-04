@@ -127,6 +127,9 @@
                                                             <constraint firstAttribute="width" constant="55" id="j5e-gs-8uE"/>
                                                         </constraints>
                                                         <state key="normal" image="shapeIcon"/>
+                                                        <connections>
+                                                            <action selector="shapeBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UxS-rD-zZW"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njm-Ss-R7J">
                                                         <rect key="frame" x="165" y="0.0" width="55" height="55"/>
@@ -171,6 +174,44 @@
                                     <constraint firstItem="hy6-EK-XhP" firstAttribute="leading" secondItem="yzC-k9-Tha" secondAttribute="leading" id="qDQ-CP-IKp"/>
                                 </constraints>
                             </view>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="57Z-1H-kjP">
+                                <rect key="frame" x="0.0" y="547" width="150" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1fX-Ic-USA"/>
+                                    <constraint firstAttribute="height" constant="50" id="4RV-Ws-51C"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ojy-as-8No">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reuseShapeCollectionViewCell" id="qFJ-gk-KOd" customClass="ShapeCollectionViewCell" customModule="PhotoEditorApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ru4-vx-McE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ru4-vx-McE" firstAttribute="top" secondItem="qFJ-gk-KOd" secondAttribute="top" id="E9J-fR-Jjd"/>
+                                            <constraint firstAttribute="bottom" secondItem="ru4-vx-McE" secondAttribute="bottom" id="Fgb-gR-lS6"/>
+                                            <constraint firstItem="ru4-vx-McE" firstAttribute="leading" secondItem="qFJ-gk-KOd" secondAttribute="leading" id="hmA-18-kVp"/>
+                                            <constraint firstAttribute="trailing" secondItem="ru4-vx-McE" secondAttribute="trailing" id="y6Y-UF-N2j"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="shapeImgView" destination="ru4-vx-McE" id="djS-en-TYs"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkO-Ct-CNE">
                                 <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                                 <subviews>
@@ -246,10 +287,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pkO-Ct-CNE" secondAttribute="bottom" id="JuO-mA-bKZ"/>
                             <constraint firstItem="rNr-ab-R1E" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MqV-C1-1np"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WK0-Bu-iVy" secondAttribute="trailing" id="RBz-rZ-nZZ"/>
+                            <constraint firstItem="57Z-1H-kjP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S1I-I4-4lf"/>
                             <constraint firstItem="rNr-ab-R1E" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="WoA-55-Cb2"/>
                             <constraint firstItem="yzC-k9-Tha" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X1T-lt-Xyi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pkO-Ct-CNE" secondAttribute="trailing" id="YW9-of-3MD"/>
                             <constraint firstItem="WK0-Bu-iVy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZJN-pm-BiI"/>
+                            <constraint firstItem="pkO-Ct-CNE" firstAttribute="top" secondItem="57Z-1H-kjP" secondAttribute="bottom" id="f24-2a-WQH"/>
                             <constraint firstItem="yzC-k9-Tha" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="jAj-ZK-ukJ"/>
                             <constraint firstItem="rNr-ab-R1E" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jiE-fE-PLd"/>
                             <constraint firstItem="rNr-ab-R1E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m2k-5B-aVm"/>
@@ -261,6 +304,7 @@
                     <connections>
                         <outlet property="canvasImageView" destination="NPi-mq-pe6" id="iij-HM-OoE"/>
                         <outlet property="canvasView" destination="rNr-ab-R1E" id="bJQ-xt-aZG"/>
+                        <outlet property="colorBtn" destination="9nA-xV-0VK" id="XBp-36-G1k"/>
                         <outlet property="colorViewBottomConstraint" destination="JuO-mA-bKZ" id="dEz-dJ-QxT"/>
                         <outlet property="colorsCollectionView" destination="BId-dv-SJS" id="oiF-NF-fea"/>
                         <outlet property="colorsView" destination="pkO-Ct-CNE" id="8tp-sM-jAC"/>
@@ -269,6 +313,7 @@
                         <outlet property="imageViewHeightConstraint" destination="nB6-dV-mdh" id="HTI-va-YRX"/>
                         <outlet property="mainBtnsView" destination="6FQ-lQ-Dw6" id="kj9-71-7ue"/>
                         <outlet property="sendBtn" destination="WK0-Bu-iVy" id="Yfk-mM-4EK"/>
+                        <outlet property="shapesCollectionView" destination="57Z-1H-kjP" id="2UV-8S-QXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -282,6 +327,7 @@
         <image name="photoIcon" width="20" height="20"/>
         <image name="shapeIcon" width="26" height="21"/>
         <image name="textIcon" width="31" height="21"/>
+        <image name="triangleIcon" width="52" height="49"/>
         <image name="undoIcon" width="22" height="18"/>
     </resources>
 </document>
