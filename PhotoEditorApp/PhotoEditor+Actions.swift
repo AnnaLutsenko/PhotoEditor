@@ -13,6 +13,7 @@ extension PhotoEditorViewController {
     
     @IBAction func drawBtnTapped(_ sender: Any) {
         isDrawing = true
+        undoBtn.isHidden = false
         colorBtn.setImage(UIImage(named: "pencilIcon"), for: .normal)
         canvasImageView.isUserInteractionEnabled = false
         mainBnts(isHidden: true)
@@ -52,6 +53,7 @@ extension PhotoEditorViewController {
         canvasImageView.isUserInteractionEnabled = true
         shapesCollectionView.isHidden = true
         mainBnts(isHidden: false)
+        undoBtn.isHidden = true
         isDrawing = false
         isShape = false
     }

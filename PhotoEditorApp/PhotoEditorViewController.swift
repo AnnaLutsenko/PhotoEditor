@@ -32,6 +32,7 @@ class PhotoEditorViewController: UIViewController {
     @IBOutlet weak var shapesCollectionView: UICollectionView!
     var shapeCollectionViewDelegate: ShapeCollectionViewDelegate!
     
+    @IBOutlet weak var undoBtn: UIButton!
     @IBOutlet weak var doneUndoBtnsView: UIView!
     @IBOutlet weak var mainBtnsView: UIView!
     @IBOutlet weak var sendBtn: SendButton!
