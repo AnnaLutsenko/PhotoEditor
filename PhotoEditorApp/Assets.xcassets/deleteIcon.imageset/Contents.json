@@ -7,17 +7,16 @@
     },
     {
       "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "icons8-waste-101.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icons8-waste-50.png",
-      "unassigned" : true,
-      "scale" : "1x"
     }
   ],
   "info" : {

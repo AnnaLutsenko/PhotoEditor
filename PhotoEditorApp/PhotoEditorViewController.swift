@@ -47,6 +47,9 @@ class PhotoEditorViewController: UIViewController {
     var textColor = UIColor.white
     
     var lastPoint: CGPoint!
+    var linePath: [(CGPoint, CGPoint)] = []
+    var linesArr: [[(CGPoint, CGPoint)]] = []
+    var lineColors: [UIColor] = []
     
     var lastPanPoint: CGPoint?
     var lastTextViewTransform: CGAffineTransform?

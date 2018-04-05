@@ -17,16 +17,7 @@ extension PhotoEditorViewController {
                 lastPoint = touch.location(in: self.canvasImageView)
             }
         }
-            //Hide stickersVC if clicked outside it
-        else if stickersVCIsVisible == true {
-            if let touch = touches.first {
-                let location = touch.location(in: self.view)
-//                if !stickersViewController.view.frame.contains(location) {
-//                    removeStickersView()
-//                }
-            }
-        }
-        
+        //Hide VC if clicked outside it
     }
     
     override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,6 +36,9 @@ extension PhotoEditorViewController {
     
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
         if isDrawing {
+            linesArr.append(linePath)
+            lineColors.append(drawColor)
+            linePath = []
             if !swiped {
                 // draw a single point
                 drawLineFrom(lastPoint, toPoint: lastPoint)
@@ -53,7 +47,7 @@ extension PhotoEditorViewController {
         
     }
     
-    func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
+    func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint, color: UIColor? = nil) {
         // 1
         UIGraphicsBeginImageContext(canvasImageView.frame.size)
         if let context = UIGraphicsGetCurrentContext() {
@@ -64,14 +58,34 @@ extension PhotoEditorViewController {
             // 3
             context.setLineCap( CGLineCap.round)
             context.setLineWidth(5.0)
-            context.setStrokeColor(drawColor.cgColor)
+            context.setStrokeColor(color?.cgColor ?? drawColor.cgColor)
             context.setBlendMode( CGBlendMode.normal)
             // 4
             context.strokePath()
             // 5
             canvasImageView.image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
+            //
+            if color == nil {
+                linePath.append((fromPoint, toPoint))
+            }
         }
     }
     
+    @IBAction func removeLastLine(_ sender: UIButton) {
+        canvasImageView.image = nil
+        if linesArr.count != 0 {
+            linesArr.removeLast()
+            lineColors.removeLast()
+            drawImgFromLines()
+        }
+    }
+    
+    private func drawImgFromLines() {
+        for (index, line) in linesArr.enumerated() {
+            for path in line {
+                drawLineFrom(path.0, toPoint: path.1, color: lineColors[index])
+            }
+        }
+    }
 }
