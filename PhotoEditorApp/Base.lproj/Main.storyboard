@@ -97,6 +97,9 @@
                                                     <constraint firstAttribute="width" constant="55" id="5bN-cj-7Vg"/>
                                                 </constraints>
                                                 <state key="normal" image="closeIcon"/>
+                                                <connections>
+                                                    <action selector="dismissVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqE-6w-k9M"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9g-dY-uB2">
                                                 <rect key="frame" x="155" y="0.0" width="220" height="55"/>

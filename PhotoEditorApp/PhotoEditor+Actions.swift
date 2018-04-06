@@ -65,6 +65,10 @@ extension PhotoEditorViewController {
         present(picker, animated: true, completion: nil)
     }
     
+    @IBAction func dismissVC(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func clearAllDrawing() {
         //clear drawing
         canvasImageView.image = nil
