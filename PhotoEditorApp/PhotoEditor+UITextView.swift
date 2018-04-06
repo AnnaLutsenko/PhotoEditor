@@ -40,6 +40,10 @@ extension PhotoEditorViewController: UITextViewDelegate {
             else {
                 return
         }
+        if !containsSomeLetters(input: textView.text) {
+            textView.removeFromSuperview()
+            return
+        }
         activeTextView = nil
         textView.font = self.lastTextViewFont!
         UIView.animate(withDuration: 0.3,
@@ -49,4 +53,9 @@ extension PhotoEditorViewController: UITextViewDelegate {
         }, completion: nil)
     }
     
+    func containsSomeLetters(input: String) -> Bool {
+        let letters = NSCharacterSet.letters
+        let range = input.rangeOfCharacter(from: letters)
+        return range != nil
+    }
 }

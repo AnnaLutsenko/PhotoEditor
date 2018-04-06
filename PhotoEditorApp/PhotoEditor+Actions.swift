@@ -58,6 +58,12 @@ extension PhotoEditorViewController {
         isShape = false
     }
     
+    @IBAction func addImageBtnTapped(_ sender: UIButton) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
     
     func clearAllDrawing() {
         //clear drawing

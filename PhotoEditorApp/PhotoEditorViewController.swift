@@ -120,19 +120,22 @@ class PhotoEditorViewController: UIViewController {
         sendBtn.isHidden = isHidden
         doneUndoBtnsView.isHidden = !isHidden
         colorsView.isHidden = !isHidden
+        sendBtnIsEnabled()
     }
     
     func deleteView(isHidden: Bool) {
         deleteView.isHidden = isHidden
         sendBtn.isHidden = !isHidden
+        colorsView.isHidden = !isHidden
         shapesCollectionView.isHidden = true
     }
     
-    @IBAction func addImageBtnTapped(_ sender: UIButton) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
+    func sendBtnIsEnabled() {
+        let hasSubviews = canvasImageView.subviews.count > 0
+        let hasDrawing = canvasImageView.image != nil
+        let hasImg = imageView.image != nil
+        
+        sendBtn.isEnabled = (hasSubviews || hasDrawing || hasImg)
     }
 
 }

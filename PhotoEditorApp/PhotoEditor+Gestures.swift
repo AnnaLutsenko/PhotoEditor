@@ -161,7 +161,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
     
     func moveView(view: UIView, recognizer: UIPanGestureRecognizer)  {
         
-//        mainBnts(isHidden: true)
+        mainBnts(isHidden: true)
         deleteView(isHidden: false)
         view.superview?.bringSubview(toFront: view)
         let pointToSuperView = recognizer.location(in: self.view)
@@ -203,6 +203,7 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
             
             if deleteView.frame.contains(point) { // Delete the view
                 view.removeFromSuperview()
+                sendBtnIsEnabled()
                 if #available(iOS 10.0, *) {
                     let generator = UINotificationFeedbackGenerator()
                     generator.notificationOccurred(.success)
